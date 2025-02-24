@@ -25,7 +25,7 @@ const boardSlice = createSlice({
                 }),
             };
         },
-        selectBoard: () => (state, action) => {
+        selectBoard: (state, action) => {
             state.selectedBoardId = action.payload;
         },
         resetBoard: () => {
