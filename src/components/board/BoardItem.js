@@ -10,7 +10,7 @@ const Wrapper = styled.div`
         background-color: #eeeeee;
     }
     ${(props) =>
-        props._isSelected &&
+        props.$_isSelected &&
         `
         background-color: #dddddd;
     `}
@@ -21,7 +21,7 @@ function BoardItem(props) {
 
     return (
         <Wrapper
-            _isSelected={isSelected}
+            $_isSelected={isSelected}
             onClick={onSelect}>
             {board.title}
 
