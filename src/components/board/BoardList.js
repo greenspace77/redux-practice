@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import styled from 'styled-components';
 import { selectBoard, deleteBoard } from '../../redux/slices/boardSlice';
+import deleteBoardThunk from '../../redux/thunks/deleteBoardThunk';
 import BoardItem from './BoardItem';
 
 const Wrapper = styled.div`
@@ -28,7 +29,7 @@ function BoardList(props) {
                             dispatch(selectBoard(board.id));
                         }}
                         onDelete={() => {
-                            dispatch(deleteBoard(board.id));
+                            dispatch(deleteBoardThunk(board.id));
                         }}
                     />
                 );

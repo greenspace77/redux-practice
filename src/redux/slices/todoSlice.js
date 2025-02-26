@@ -40,6 +40,11 @@ const todoSlice = createSlice({
                 return todo.id !== targetTodoId;
             });
         },
+        deleteBoardTodos: (state, action) => {
+          const targetBoardId = action.payload;
+          
+          delete state.boardTodosMap[targetBoardId];
+        },
         resetTodo: () => {
             return initialState;
         },
@@ -50,6 +55,7 @@ export const {
     addTodo,
     toggleFinishTodo,
     deleteTodo,
+    deleteBoardTodos,
     resetTodo,
 } = todoSlice.actions;
 
