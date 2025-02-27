@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import styled from "styled-components";
+import AppBar from './AppBar';
 import BoardList from "./board/BoardList";
 import BoardMenu from "./board/BoardMenu";
 import TodoList from './todo/TodoList';
@@ -30,6 +31,7 @@ function App() {
 
     return (
         <Wrapper>
+            <AppBar />
             <ContentContainer>
                 <BoardCotainer>
                     <BoardList />

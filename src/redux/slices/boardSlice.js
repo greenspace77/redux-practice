@@ -4,6 +4,12 @@ import deleteBoardThunk from '../thunks/deleteBoardThunk';
 const initialState = {
     boards: [],
     selectedBoardId: null,
+
+    resetBoardSaga: {
+        pending: false,
+        data: null,
+        error: null,
+    },
 }
 
 const boardSlice = createSlice({
@@ -32,6 +38,28 @@ const boardSlice = createSlice({
         resetBoard: () => {
             return initialState;
         },
+        resetBoardSagaRequested: (state, action) => {
+            state.resetBoardSaga = {
+                ...state.resetBoardSaga,
+                pending: true,
+                data: null,
+                error: null,
+            };
+        },
+        resetBoardSagaSucceeded: (state, action) => {
+            state.resetBoardSaga = {
+                ...state.resetBoardSaga,
+                pending: false,
+                data: action.payload,
+            };
+        },
+        resetBoardSagaFailed: (state, action) => {
+            state.resetBoardSaga = {
+                ...state.resetBoardSaga,
+                pending: false,
+                error: action.payload,
+            };
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -52,6 +80,9 @@ export const {
     deleteBoard,
     selectBoard,
     resetBoard,
+    resetBoardSagaRequested,
+    resetBoardSagaSucceeded,
+    resetBoardSagaFailed,
 } = boardSlice.actions;
 
 export default boardSlice.reducer;
